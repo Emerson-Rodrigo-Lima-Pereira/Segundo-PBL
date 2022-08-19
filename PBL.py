@@ -1,452 +1,730 @@
-AcucarF = ArrozF = CafeF = Extrato_de_tomateF = MacarraoF = BolachaF = OleoF = Farinha_de_trigoF = FeijaoF = SalF = OutrosF = 0
-AcucarJ = ArrozJ = CafeJ = Extrato_de_tomateJ = MacarraoJ = BolachaJ = OleoJ = Farinha_de_trigoJ = FeijaoJ = SalJ = OutrosJ = 0
-cesta = 0
-total_item_fisica = total_item_juridica = 0
-acucar_to_parcial = arroz_to_parcial = cafe_to_parcial = extrato_de_tomate_to_parcial = macarrao_to_parcial = bolacha_to_parcial = oleo_to_parcial = farinha_de_trigo_to_parcial = feijao_to_parcial = sal_to_parcial = outros_to_parcial = acucar_to = arroz_to = cafe_to = extrato_de_tomate_to = macarrao_to = bolacha_to = oleo_to = farinha_de_trigo_to = feijao_to = sal_to = outros_to = 0
-resto_acucarf = resto_arrozf = resto_cafef = resto_extrato_de_tomatef = resto_macarraof = resto_farinha_de_trigof = resto_feijaof = resto_salf = resto_acucarj = resto_arrozj = resto_cafej = resto_extrato_de_tomatej = resto_macarraoj = resto_farinha_de_trigoj = resto_feijaoj = resto_salj = 0
-fechar = True
-#declaracao de variaveis contadoras ↑
-while fechar ==True:
-#condicional caso o usuario nao queira fechar o dia ↑
-    print("***********************")
-    menu = input("[1] Solicitar relatório\n[2] Fazer doação\n[3] Fechar o dia\n***********************\n").lower()
-    while menu.isdigit()==False or menu != "1" and menu != "2" and menu != "3":
-        menu = input("***********************\n[1] Solicitar relatório\n[2] Fazer doação\n[3] Fechar o dia\n***********************\n").lower()
-    #funcao para perguntar ao usuario se ele quer ver o relatorio ou fazer doacao e sua validacao ↑
-    continuar = True
-    if menu == "3":
-        fechar = False
-    #condicional caso o usuario queira fechar o dia ↑
-    elif menu == "2":
-    #condicional caso o usuario queira fazer doacao ↑
-        nome = input("Qual o nome do doador: ").lower()
-        while nome.isalpha()==False:
-            nome = input("Qual o nome do doador: ").lower()
-        tipo_de_doador = input("Pessoa [física]/[jurídica]: ").lower().replace("í","i")
-        while tipo_de_doador.isalpha()==False or tipo_de_doador != "fisica" and tipo_de_doador != "juridica":
-            tipo_de_doador = input("Pessoa [física]/[jurídica]: ").lower().replace("í","i")
-        #funcao para perguntar o nome e tipo de doador, e suas validacoes ↑    
-        while tipo_de_doador == "fisica" and continuar == True and menu == "2":
-        #condicional caso o tipo de doador for pessoa fisica ↑
-            print("*************************")
-            print("Qual item você quer doar:\n0)Açúcar;\n1)Arroz;\n2)Café;\n3)Extrato de tomate;\n4)Macarrão;\n5)Bolacha;\n6)Óleo;\n7)Farinha de trigo;\n8)Feijão;\n9)Sal;\n10)Outros. ")
-            print("*************************")
-            #funcao para mostrar ao usuario quais itens ele pode doar ↑
-            tipo = input("Qual item: ")
-            while tipo.isdigit()==False or int(tipo) < 0 or int(tipo) > 10:
-                tipo = input("Qual item: ")
-            #funcao para perguntar ao usuario que item ele quer doar e sua validacao ↑
-            if tipo == "0" or tipo == "1" or tipo == "2" or tipo == "7" or tipo == "8" or tipo == "9":
-            #condicional caso o tipo do item seja medido em kg ↑
-                quantidade_1 = input("Quantos kg: ")
-                quantidade = quantidade_1
-                while quantidade_1.replace(".","").isdigit()==False:
-                    quantidade_1 = input("Quantos kg: ")
-                    quantidade = quantidade_1
-            elif tipo == "3" or tipo == "4" or tipo == "10":
-            #condicional caso o tipo do item seja contado em unidades ↑
-                quantidade = input("Quantas unidades: ")
-                while quantidade.isdigit()==False:
-                    quantidade = input("Quantas unidades: ")
-            elif tipo == "5":
-            #condicional caso o tipo do item seja contado em pct ↑
-                quantidade = input("Quantos pct: ")
-                while quantidade.isdigit()==False:
-                    quantidade = input("Quantos pct: ")
-            else:
-            #condicional caso o tipo do item seja medido em L ↑
-                quantidade = input("Quantos L: ")
-                while quantidade.isdigit()==False:
-                    quantidade = input("Quantos L: ")
-                #funcao que pergunta a quantidade que o usuario quer doar e sua validacao ↑                                          
-            if tipo == "0" :
-                AcucarF +=float(quantidade)    
-            elif tipo == "1":  
-                ArrozF +=float(quantidade)
-            elif tipo == "2":
-                CafeF +=float(quantidade)
-            elif tipo == "3":
-                Extrato_de_tomateF +=int(quantidade)
-            elif tipo == "4":
-                MacarraoF +=int(quantidade)
-            elif tipo == "5":
-                BolachaF +=int(quantidade)                            
-            elif tipo == "6":
-                OleoF +=int(quantidade)   
-            elif tipo == "7":
-                Farinha_de_trigoF +=float(quantidade) 
-            elif tipo == "8":
-                FeijaoF +=float(quantidade)
-            elif tipo == "9":
-                SalF +=float(quantidade)                                                                       
-            elif tipo == "10":
-                OutrosF +=int(quantidade)
-            #condicional para saber qual tipo do item o usuario doou ↑
-                #adicionando a variavel contadora a quantidade doada ↑
-            continuar = input("Quer continuar doando [sim]/[não]:").lower().replace("ã","a")
-            while continuar.isalpha()==False and continuar != "sim" and continuar != "nao":
-                continuar = input("Quer continuar doando [sim]/[não]:").lower().replace("ã","a")
-            #funcao para perguntar se o usuario quer continuar doando e sua validacao ↑
-            if continuar == "sim":
-                continuar = True
-            #condicional caso o usuario queira continuar doando ↑
-            else:
-                continuar = False    
-            #condicional caso o usuario nao queira continuar doando ↑                   
-        while tipo_de_doador == "juridica" and continuar == True and menu == "2":
-        #condicional caso o tipo de doador for pessoa juridica ↑
-            print("*************************")
-            print("Qual item você quer doar:\n0)Açúcar;\n1)Arroz;\n2)Café;\n3)Extrato de tomate;\n4)Macarrão;\n5)Bolacha;\n6)Óleo;\n7)Farinha de trigo;\n8)Feijão;\n9)Sal;\n10)Outros. ")
-            print("*************************")
-            #funcao para mostrar ao usuario quais itens ele pode doar ↑
-            tipo = input("Qual item: ")
-            while tipo.isdigit()==False or int(tipo) < 0 or int(tipo) > 10:
-                tipo = input("Qual item: ")
-            #funcao para perguntar ao usuario qual item ele quer doar e sua validacao ↑
-            if tipo == "0" or tipo == "1" or tipo == "2" or tipo == "7" or tipo == "8" or tipo == "9":
-            #condicional caso o tipo do item seja medido em kg ↑
-                quantidade_1 = input("Quantos kg: ")
-                quantidade = quantidade_1
-                while quantidade_1.replace(".","").isdigit()==False:
-                    quantidade_1 = input("Quantos kg: ")
-                    quantidade = quantidade_1
-            elif tipo == "3" or tipo == "4" or tipo == "10":
-            #condicional caso o tipo do item seja contado em unidades ↑
-                quantidade = input("Quantas unidades: ")
-                while quantidade.isdigit()==False:
-                    quantidade = input("Quantas unidades: ")
-            elif tipo == "5":
-            #condicional caso o tipo do item seja contado em pct ↑
-                quantidade = input("Quantos pct: ")
-                while quantidade.isdigit()==False:
-                    quantidade = input("Quantos pct: ")
-            else:
-            #condicional caso o tipo do item seja medido em L ↑
-                    quantidade = input("Quantos L: ")
-                    while quantidade.isdigit()==False:
-                        quantidade = input("Quantos L: ")
-                #funcao que pergunta a quantidade que o usuario quer doar e sua validacao ↑                                          
-            if tipo == "0":
-                AcucarJ +=float(quantidade)    
-            elif tipo == "1":  
-                ArrozJ +=float(quantidade)
-            elif tipo == "2":
-                CafeJ +=float(quantidade)
-            elif tipo == "3":
-                Extrato_de_tomateJ +=int(quantidade)
-            elif tipo == "4":
-                MacarraoJ +=int(quantidade)
-            elif tipo == "5":
-                BolachaJ +=int(quantidade)                            
-            elif tipo == "6":
-                OleoJ +=int(quantidade)   
-            elif tipo == "7":
-                Farinha_de_trigoJ +=float(quantidade) 
-            elif tipo == "8":
-                FeijaoJ +=float(quantidade)
-            elif tipo == "9":
-                SalJ +=float(quantidade)                                                                       
-            elif tipo == "10":
-                OutrosJ +=int(quantidade)
-            #condicional para saber qual tipo do item o usuario doou ↑
-                #adicionando a variavel contadora a quantidade doada ↑
-            continuar = input("Quer continuar doando [sim]/[não]:").lower().replace("ã","a")
-            while continuar.isalpha()==False or continuar != "sim" and continuar != "nao":
-                continuar = input("Quer continuar doando [sim]/[não]:").lower().replace("ã","a")
-            #funcao para perguntar se o usuario quer continuar doando e sua validacao ↑
-            if continuar == "sim":
-                continuar = True
-            #condicinal caso o usuario queira continuar doando ↑
-            else:
-                continuar = False
-            #condicional caso o usuario nao queira continuar doando ↑
-        acucar_to_parcial += (AcucarF - resto_acucarf) + (AcucarJ - resto_acucarj)
-        arroz_to_parcial += (ArrozF - resto_arrozf) + (ArrozJ - resto_arrozj)
-        cafe_to_parcial += (CafeF - resto_cafef) + (CafeJ - resto_cafej)
-        extrato_de_tomate_to_parcial += (Extrato_de_tomateF - resto_extrato_de_tomatef) + (Extrato_de_tomateJ - resto_extrato_de_tomatej)
-        macarrao_to_parcial += (MacarraoF - resto_macarraof) + (MacarraoJ - resto_macarraoj)
-        bolacha_to_parcial += BolachaF + BolachaJ
-        oleo_to_parcial += OleoF + OleoJ
-        farinha_de_trigo_to_parcial += (Farinha_de_trigoF - resto_farinha_de_trigof) + (Farinha_de_trigoJ - resto_farinha_de_trigoj)
-        feijao_to_parcial += (FeijaoF - resto_feijaof) + (FeijaoJ - resto_feijaoj)
-        sal_to_parcial += (SalF - resto_salf) + (SalJ - resto_salj)
-        #variaveis que ajudaram saber quantas cestas basicas formadas ↑
-        acucar_to += (AcucarF - resto_acucarf) + (AcucarJ - resto_acucarj)
-        arroz_to += (ArrozF - resto_arrozf) + (ArrozJ - resto_arrozj)
-        cafe_to += (CafeF - resto_cafef) + (CafeJ - resto_cafej)
-        extrato_de_tomate_to += (Extrato_de_tomateF - resto_extrato_de_tomatef) + (Extrato_de_tomateJ - resto_extrato_de_tomatej)
-        macarrao_to += (MacarraoF - resto_macarraof) + (MacarraoJ - resto_macarraoj)
-        bolacha_to += BolachaF + BolachaJ
-        oleo_to += OleoF + OleoJ
-        farinha_de_trigo_to += (Farinha_de_trigoF - resto_farinha_de_trigof) + (Farinha_de_trigoJ - resto_farinha_de_trigoj)
-        feijao_to += (FeijaoF - resto_feijaof) + (FeijaoJ - resto_feijaoj)
-        sal_to += (SalF - resto_salf) + (SalJ - resto_salj)
-        outros_to += OutrosF + OutrosJ
-        #variaveis para saber o total de cada item doado ↑
-        total_item_fisica += (AcucarF //1) + (ArrozF //4) + (CafeF //2) + (Extrato_de_tomateF //2) + (MacarraoF //3) + (BolachaF //1) + (OleoF //1) + (Farinha_de_trigoF //1) + (FeijaoF //4) + (SalF //1) + (OutrosF //1)
-        total_item_juridica += (AcucarJ //1) + (ArrozJ //4) + (CafeJ //2) + (Extrato_de_tomateJ //2) + (MacarraoJ //3) + (BolachaJ //1) + (OleoJ //1) + (Farinha_de_trigoJ //1) + (FeijaoJ //4) + (SalJ //1) + (OutrosJ //1)
-        #variaveis para saber o total de itens doados (sendo qualquer tipo) por pessoa fisica e pessoa juridica ↑
-        resto_acucarf = AcucarF % 1
-        resto_arrozf = ArrozF % 4 
-        resto_cafef = CafeF % 2 
-        resto_extrato_de_tomatef = Extrato_de_tomateF % 2 
-        resto_macarraof = MacarraoF % 3   
-        resto_farinha_de_trigof = Farinha_de_trigoF % 1 
-        resto_feijaof = FeijaoF % 4
-        resto_salf = SalF % 1
-        resto_acucarj = AcucarJ % 1
-        resto_arrozj = ArrozJ % 4 
-        resto_cafej = CafeJ % 2 
-        resto_extrato_de_tomatej = Extrato_de_tomateJ % 2 
-        resto_macarraoj = MacarraoJ % 3   
-        resto_farinha_de_trigoj = Farinha_de_trigoJ % 1 
-        resto_feijaoj = FeijaoJ % 4
-        resto_salj = SalJ % 1
-        #variaveis para saber quantos itens nao formaram a quantidade certa para a montagem de cesta basica ↑
-        BolachaF = OleoF = OutrosF = 0
-        BolachaJ = OleoJ = OutrosJ = 0
-        AcucarF = resto_acucarf 
-        ArrozF = resto_arrozf 
-        CafeF = resto_cafef 
-        Extrato_de_tomateF = resto_extrato_de_tomatef 
-        MacarraoF = resto_macarraof   
-        Farinha_de_trigoF = resto_farinha_de_trigof 
-        FeijaoF = resto_feijaof 
-        SalF = resto_salf
-        AcucarJ = resto_acucarj
-        ArrozJ = resto_arrozj
-        CafeJ = resto_cafej
-        Extrato_de_tomateJ = resto_extrato_de_tomatej
-        MacarraoJ = resto_macarraoj
-        Farinha_de_trigoJ = resto_farinha_de_trigoj
-        FeijaoJ = resto_feijaoj
-        SalJ = resto_salj
-        #variaveis para saber tirar a quantidade de itens que formaram a quantidade certa para a montagem de cesta basica ↑               
-    if menu == "1":
-    #condicional caso o usuario queira ver o relatorio ↑  
-        print("************************************************************************************Relatório***********************************************************************************")
-        #funcao para mostrar ao usuario varios "*" e "Relatório" ↑
-        print("Açúcar :{} ; Arroz :{} ; Café :{} ; Extrato de tomate :{} ; Macarrão :{} ; Bolacha :{} ; Óleo :{} ; Farinha de trigo :{} ; Feijão :{} ; Sal :{} ; Item extra :{} .".format(acucar_to, arroz_to,cafe_to,extrato_de_tomate_to,macarrao_to,bolacha_to,oleo_to,farinha_de_trigo_to,feijao_to,sal_to,outros_to))
-        #funcao para mostrar ao usuario a quantidade total de cada item doado ↑
-        print("Foram doados {} itens por Pessoas Físicas e {} itens por Pessoa Jurídicas.".format(total_item_fisica, total_item_juridica))     
-        #funcao para mostrar a quantidade de itens doados (independente do tipo) por pessoa fisica e pessoa juridica ↑               
-        while acucar_to_parcial >= 1 and arroz_to_parcial >= 4 and cafe_to_parcial >= 2 and extrato_de_tomate_to_parcial >= 2 and macarrao_to_parcial >= 3 and bolacha_to_parcial >= 1 and oleo_to_parcial >= 1 and farinha_de_trigo_to_parcial >= 1 and feijao_to_parcial >= 4 and sal_to_parcial >= 1:
-        #repeticao por condicao para montar cestas basicas ↑    
-            cesta +=1
-            #variavel para contar quantas cestas basicas foram formadas ↑
-            acucar_to_parcial -=1
-            arroz_to_parcial -=4
-            cafe_to_parcial -=2
-            extrato_de_tomate_to_parcial -=2
-            macarrao_to_parcial -=3
-            bolacha_to_parcial -=1
-            oleo_to_parcial -=1
-            farinha_de_trigo_to_parcial -=1
-            feijao_to_parcial -=4
-            sal_to_parcial -=1
-            #variaveis para tirar a quantidade de itens que formaram cesta basica ↑
-        if outros_to > cesta:
-            item = outros_to - cesta
+#biblioteca para sortear os numeros da matriz
+import random
+random.seed()
+#funcao para saber a dimensão do tabuleiro e os parametros do sorteio
+def dimensao_do_tabuleiro(dificuldade):
+    primeiro = 1
+    if dificuldade == 1:
+        dimensao_da_matriz = 3
+        ultimo = 30
+    elif dificuldade == 2:
+        dimensao_da_matriz = 4
+        ultimo = 60
+    elif dificuldade == 3:
+        dimensao_da_matriz = 5
+        ultimo = 100
+    return primeiro, ultimo, dimensao_da_matriz
+#funcao para gerar o tabuleiro de acordo com a dimensao da matriz e os parametros do sorteio
+def gerar_tabuleiro(dificuldade):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    linha = [0] * (dimensao_da_matriz + 1)
+    tabuleiro = [linha] * (dimensao_da_matriz + 1)
+    lista = []
+    for l in range(dimensao_da_matriz):
+        linha = []
+        for j in range(dimensao_da_matriz):
+            elemento = random.randrange(primeiro, ultimo+1)
+            while elemento in lista:
+                elemento = random.randrange(primeiro, ultimo+1)
+            if elemento not in lista:
+                linha.append(elemento)
+                lista.append(elemento)
+        linha.append(0)
+        tabuleiro[l] = linha
+    return tabuleiro
+#funcao para gerar a quantidade de tabuleiros necessarios
+def quantidade_de_tabuleiros(modo_de_jogo,dificuldade):
+    if modo_de_jogo == 1:
+        tabuleiro_dos_jogadores = gerar_tabuleiro(dificuldade)
+        return tabuleiro_dos_jogadores, 0
+    elif modo_de_jogo == 2:
+        tabuleiro_do_jogador1 = gerar_tabuleiro(dificuldade)
+        tabuleiro_do_jogador2 = gerar_tabuleiro(dificuldade)
+        return tabuleiro_do_jogador1, tabuleiro_do_jogador2
+#funcao para gerar tabuleiro vazio
+def gerar_tabuleiro_vazio(dificuldade):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    tabuleiro_vazio = []
+    for l in range(dimensao_da_matriz +1):
+        linha = []
+        for j in range(dimensao_da_matriz +1):
+            linha.append("X")
+        tabuleiro_vazio.append(linha)
+    return tabuleiro_vazio
+#funcao para gerar a quantidade de tabuleiros vazios necessarios
+def quantidade_de_tabuleiros_vazio(modo_de_jogo, dificuldade):
+    if modo_de_jogo == 1:
+        tabuleiro_vazio_dos_jogadores = gerar_tabuleiro_vazio(dificuldade)
+        return tabuleiro_vazio_dos_jogadores, 0
+    elif modo_de_jogo == 2:
+        tabuleiro_vazio_do_jogador1 = gerar_tabuleiro_vazio(dificuldade)
+        tabuleiro_vazio_do_jogador2 = gerar_tabuleiro_vazio(dificuldade)
+        return tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2
+#funcao para somar e atribuir a soma a ultima linha e a ultima coluna de cada indice
+def soma_linha_coluna(dificuldade,tabuleiro_do_jogador1, tabuleiro_do_jogador2):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    for l in range(dimensao_da_matriz):
+        soma_linha_ta1 = soma_linha_ta2 = soma_coluna_ta1 = soma_coluna_ta2 =0
+        for j in range(dimensao_da_matriz+1):
+            if j != dimensao_da_matriz:
+                soma_linha_ta1 += tabuleiro_do_jogador1[l][j]
+                soma_coluna_ta1 += tabuleiro_do_jogador1[j][l]
+                if tabuleiro_do_jogador2 != 0:
+                    soma_linha_ta2 += tabuleiro_do_jogador2[l][j]
+                    soma_coluna_ta2 += tabuleiro_do_jogador2[j][l]
+            elif j == dimensao_da_matriz:
+                tabuleiro_do_jogador1[l][j] = soma_linha_ta1
+                tabuleiro_do_jogador1[j][l] = soma_coluna_ta1
+                if tabuleiro_do_jogador2 != 0:
+                    tabuleiro_do_jogador2[l][j] = soma_linha_ta2
+                    tabuleiro_do_jogador2[j][l] = soma_coluna_ta2
+    return tabuleiro_do_jogador1, tabuleiro_do_jogador2
+#funcao para revelar o menor valor da linha de um indice do tabuleiro1
+def revelar_menor_linha_tabuleiro1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    menor = 500
+    for j in range(dimensao_da_matriz):
+        if tabuleiro_do_jogador1[linha_coluna_tabuleiro][j] < menor and tabuleiro_do_jogador1[linha_coluna_tabuleiro][j] != tabuleiro_vazio_do_jogador1[linha_coluna_tabuleiro][j]:
+            menor = tabuleiro_do_jogador1[linha_coluna_tabuleiro][j]
+            coluna_indice = j
+    tabuleiro_vazio_do_jogador1[linha_coluna_tabuleiro][coluna_indice] = menor
+    return tabuleiro_vazio_do_jogador1
+#funcao para revelar o maior valor da linha de um indice do tabuleiro1
+def revelar_maior_linha_tabuleiro1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    maior = 0
+    for j in range(dimensao_da_matriz):
+        if tabuleiro_do_jogador1[linha_coluna_tabuleiro][j] > maior and tabuleiro_do_jogador1[linha_coluna_tabuleiro][j] != tabuleiro_vazio_do_jogador1[linha_coluna_tabuleiro][j]:
+            maior = tabuleiro_do_jogador1[linha_coluna_tabuleiro][j]
+            coluna_indice = j
+    tabuleiro_vazio_do_jogador1[linha_coluna_tabuleiro][coluna_indice] = maior
+    return tabuleiro_vazio_do_jogador1
+#funcao para revelar toda a linha de um indice
+def revelar_toda_linha_tabuleiro1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    for j in range(dimensao_da_matriz+1):
+        if tabuleiro_do_jogador1[linha_coluna_tabuleiro][j] not in tabuleiro_vazio_do_jogador1:
+            tabuleiro_vazio_do_jogador1[linha_coluna_tabuleiro][j] = tabuleiro_do_jogador1[linha_coluna_tabuleiro][j]
+    return tabuleiro_vazio_do_jogador1
+#funcao para revelar o menor valor da coluna de um indice do tabuleiro1
+def revelar_menor_coluna_tabuleiro1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    menor = 500
+    for l in range(dimensao_da_matriz):
+        if tabuleiro_do_jogador1[l][linha_coluna_tabuleiro] < menor and tabuleiro_do_jogador1[l][linha_coluna_tabuleiro] != tabuleiro_vazio_do_jogador1[l][linha_coluna_tabuleiro]:
+            menor = tabuleiro_do_jogador1[l][linha_coluna_tabuleiro]
+            linha_indice = l
+    tabuleiro_vazio_do_jogador1[linha_indice][linha_coluna_tabuleiro] = menor
+    return tabuleiro_vazio_do_jogador1
+#funcao para revelar o maior valor da coluna de um indice do tabuleiro1
+def revelar_maior_coluna_tabuleiro1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    maior = 0
+    for l in range(dimensao_da_matriz):
+        if tabuleiro_do_jogador1[l][linha_coluna_tabuleiro] > maior and tabuleiro_do_jogador1[l][linha_coluna_tabuleiro] != tabuleiro_vazio_do_jogador1[l][linha_coluna_tabuleiro]:
+            maior = tabuleiro_do_jogador1[l][linha_coluna_tabuleiro]
+            linha_indice = l
+    tabuleiro_vazio_do_jogador1[linha_indice][linha_coluna_tabuleiro] = maior
+    return tabuleiro_vazio_do_jogador1
+#funcao para revelar toda coluna de um indice do tabuleiro1
+def revelar_toda_coluna_tabuleiro1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    for l in range(dimensao_da_matriz+1):
+        if tabuleiro_do_jogador1[l][linha_coluna_tabuleiro] not in tabuleiro_vazio_do_jogador1:
+            tabuleiro_vazio_do_jogador1[l][linha_coluna_tabuleiro] = tabuleiro_do_jogador1[l][linha_coluna_tabuleiro]
+    return tabuleiro_vazio_do_jogador1
+#funcao para revelar o menor valor da linha de um indice do tabuleiro2
+def revelar_menor_linha_tabuleiro2(dificuldade, tabuleiro_vazio_do_jogador2, linha_coluna_tabuleiro, tabuleiro_do_jogador2):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    menor = 500
+    for j in range(dimensao_da_matriz):
+        if tabuleiro_do_jogador2[linha_coluna_tabuleiro][j] < menor and tabuleiro_do_jogador2[linha_coluna_tabuleiro][j] != tabuleiro_vazio_do_jogador2[linha_coluna_tabuleiro][j]:
+            menor = tabuleiro_do_jogador2[linha_coluna_tabuleiro][j]
+            coluna_indice = j
+    tabuleiro_vazio_do_jogador2[linha_coluna_tabuleiro][coluna_indice] = menor
+    return tabuleiro_vazio_do_jogador2
+#funcao para revelar o maior valor da linha de um indice do tabuleiro2
+def revelar_maior_linha_tabuleiro2(dificuldade, tabuleiro_vazio_do_jogador2, linha_coluna_tabuleiro, tabuleiro_do_jogador2):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    maior = 0
+    for j in range(dimensao_da_matriz):
+        if tabuleiro_do_jogador2[linha_coluna_tabuleiro][j] > maior and tabuleiro_do_jogador2[linha_coluna_tabuleiro][j] != tabuleiro_vazio_do_jogador2[linha_coluna_tabuleiro][j]:
+            maior = tabuleiro_do_jogador2[linha_coluna_tabuleiro][j]
+            coluna_indice = j
+    tabuleiro_vazio_do_jogador2[linha_coluna_tabuleiro][coluna_indice] = maior
+    return tabuleiro_vazio_do_jogador2
+#funcao para revelar toda linha de um indice do tabuleiro2
+def revelar_toda_linha_tabuleiro2(dificuldade, tabuleiro_vazio_do_jogador2, linha_coluna_tabuleiro, tabuleiro_do_jogador2):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    for j in range(dimensao_da_matriz+1):
+        if tabuleiro_do_jogador2[linha_coluna_tabuleiro][j] not in tabuleiro_vazio_do_jogador2:
+            tabuleiro_vazio_do_jogador2[linha_coluna_tabuleiro][j] = tabuleiro_do_jogador2[linha_coluna_tabuleiro][j]
+    return tabuleiro_vazio_do_jogador2
+#funcao para revelar o menor valor da coluna de um indice do tabuleiro2
+def revelar_menor_coluna_tabuleiro2(dificuldade, tabuleiro_vazio_do_jogador2, linha_coluna_tabuleiro, tabuleiro_do_jogador2):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    menor = 500
+    for l in range(dimensao_da_matriz):
+        if tabuleiro_do_jogador2[l][linha_coluna_tabuleiro] < menor and tabuleiro_do_jogador2[l][linha_coluna_tabuleiro] != tabuleiro_vazio_do_jogador2[l][linha_coluna_tabuleiro]:
+            menor = tabuleiro_do_jogador2[l][linha_coluna_tabuleiro]
+            linha_indice = l
+    tabuleiro_vazio_do_jogador2[linha_indice][linha_coluna_tabuleiro] = menor
+    return tabuleiro_vazio_do_jogador2
+#funcao para revelar o maior valor da coluna de um indice do tabuleiro2
+def revelar_maior_coluna_tabuleiro2(dificuldade, tabuleiro_vazio_do_jogador2, linha_coluna_tabuleiro, tabuleiro_do_jogador2):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    maior = 0
+    for l in range(dimensao_da_matriz):
+        if tabuleiro_do_jogador2[l][linha_coluna_tabuleiro] > maior and tabuleiro_do_jogador2[l][linha_coluna_tabuleiro] != tabuleiro_vazio_do_jogador2[l][linha_coluna_tabuleiro]:
+            maior = tabuleiro_do_jogador2[l][linha_coluna_tabuleiro]
+            linha_indice = l
+    tabuleiro_vazio_do_jogador2[linha_indice][linha_coluna_tabuleiro] = maior
+    return tabuleiro_vazio_do_jogador2
+#funcao para revelar toda coluna de um indice do tabuleiro2
+def revelar_toda_coluna_tabuleiro2(dificuldade, tabuleiro_vazio_do_jogador2, linha_coluna_tabuleiro, tabuleiro_do_jogador2):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    for l in range(dimensao_da_matriz+1):
+        if tabuleiro_do_jogador2[l][linha_coluna_tabuleiro] not in tabuleiro_vazio_do_jogador2:
+            tabuleiro_vazio_do_jogador2[l][linha_coluna_tabuleiro] = tabuleiro_do_jogador2[l][linha_coluna_tabuleiro]
+    return tabuleiro_vazio_do_jogador2
+#funcao para indentificar se todas as casas de uma linha ou coluna do tabuleiro1 foram reveladas
+def revelar_soma_linha_coluna_jogador1(dificuldade,tabuleiro_vazio_do_jogador1, tabuleiro_do_jogador1):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    for l in range(dimensao_da_matriz):
+        casas_reveladas = 0
+        casas_reveladas1 = 0
+        for j in range(dimensao_da_matriz):
+            if tabuleiro_vazio_do_jogador1[l][j] != "X":
+                casas_reveladas +=1
+            if tabuleiro_vazio_do_jogador1[j][l] != "X":
+                casas_reveladas1 +=1
+        if casas_reveladas == dimensao_da_matriz:
+            tabuleiro_vazio_do_jogador1[l][dimensao_da_matriz] = tabuleiro_do_jogador1[l][dimensao_da_matriz]
+        if casas_reveladas1 == dimensao_da_matriz:
+            tabuleiro_vazio_do_jogador1[dimensao_da_matriz][l] = tabuleiro_do_jogador1[dimensao_da_matriz][l]
+    return tabuleiro_vazio_do_jogador1
+#funcao para indentificar se todas as casas de uma linha ou coluna do tabuleiro2 foram reveladas
+def revelar_soma_linha_coluna_jogador2(dificuldade,tabuleiro_vazio_do_jogador2, tabuleiro_do_jogador2):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    for l in range(dimensao_da_matriz):
+        casas_reveladas = 0
+        casas_reveladas1 = 0
+        for j in range(dimensao_da_matriz):
+            if tabuleiro_vazio_do_jogador2[l][j] != "X":
+                casas_reveladas +=1
+            if tabuleiro_vazio_do_jogador2[j][l] != "X":
+                casas_reveladas1 +=1
+        if casas_reveladas == dimensao_da_matriz:
+            tabuleiro_vazio_do_jogador2[l][dimensao_da_matriz] = tabuleiro_do_jogador2[l][dimensao_da_matriz]
+        if casas_reveladas1 == dimensao_da_matriz:
+            tabuleiro_vazio_do_jogador2[dimensao_da_matriz][l] = tabuleiro_do_jogador2[dimensao_da_matriz][l]
+    return tabuleiro_vazio_do_jogador2
+#funcao que chamar outras funcoes para revelar casas no tabuleiro1
+def revelar_tab1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1, dimensao_da_matriz, somas, linha_coluna, indice_jo):
+    if linha_coluna[indice_jo] == "L":
+        if somas[indice_jo] < tabuleiro_do_jogador1[linha_coluna_tabuleiro][dimensao_da_matriz]:
+            tabuleiro_vazio_do_jogador1 = revelar_menor_linha_tabuleiro1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1)
+        elif somas[indice_jo] > tabuleiro_do_jogador1[linha_coluna_tabuleiro][dimensao_da_matriz]:
+            tabuleiro_vazio_do_jogador1 = revelar_maior_linha_tabuleiro1(dificuldade, tabuleiro_vazio_do_jogador1,linha_coluna_tabuleiro, tabuleiro_do_jogador1)
+        elif somas[indice_jo] == tabuleiro_do_jogador1[linha_coluna_tabuleiro][dimensao_da_matriz]:
+            tabuleiro_vazio_do_jogador1 = revelar_toda_linha_tabuleiro1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1)
+    elif linha_coluna[indice_jo] == "C":
+        if somas[indice_jo] < tabuleiro_do_jogador1[dimensao_da_matriz][linha_coluna_tabuleiro]:
+            tabuleiro_vazio_do_jogador1 = revelar_menor_coluna_tabuleiro1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1)
+        elif somas[indice_jo] > tabuleiro_do_jogador1[dimensao_da_matriz][linha_coluna_tabuleiro]:
+            tabuleiro_vazio_do_jogador1 = revelar_maior_coluna_tabuleiro1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1)
+        elif somas[indice_jo] == tabuleiro_do_jogador1[dimensao_da_matriz][linha_coluna_tabuleiro]:
+            tabuleiro_vazio_do_jogador1 = revelar_toda_coluna_tabuleiro1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1)
+    tabuleiro_vazio_do_jogador1 = revelar_soma_linha_coluna_jogador1(dificuldade, tabuleiro_vazio_do_jogador1, tabuleiro_do_jogador1)
+    return tabuleiro_vazio_do_jogador1
+#funcao que chamar outras funcoes para revelar casas no tabuleiro2
+def revelar_tab2(dificuldade, tabuleiro_vazio_do_jogador2, tabuleiro_do_jogador2, linha_coluna, somas, linha_coluna_tabuleiro, dimensao_da_matriz, indice_jo):
+    if linha_coluna[indice_jo] == "L":
+        if somas[indice_jo] < tabuleiro_do_jogador2[linha_coluna_tabuleiro][dimensao_da_matriz]:
+            tabuleiro_vazio_do_jogador2 = revelar_menor_linha_tabuleiro2(dificuldade, tabuleiro_vazio_do_jogador2, linha_coluna_tabuleiro, tabuleiro_do_jogador2)
+        elif somas[indice_jo] > tabuleiro_do_jogador2[linha_coluna_tabuleiro][dimensao_da_matriz]:
+            tabuleiro_vazio_do_jogador2 = revelar_maior_linha_tabuleiro2(dificuldade, tabuleiro_vazio_do_jogador2,linha_coluna_tabuleiro, tabuleiro_do_jogador2)
+        elif somas[indice_jo] == tabuleiro_do_jogador2[linha_coluna_tabuleiro][dimensao_da_matriz]:
+            tabuleiro_vazio_do_jogador2 = revelar_toda_linha_tabuleiro2(dificuldade, tabuleiro_vazio_do_jogador2, linha_coluna_tabuleiro, tabuleiro_do_jogador2)
+    elif linha_coluna[indice_jo] == "C":
+        if somas[indice_jo] < tabuleiro_do_jogador2[dimensao_da_matriz][linha_coluna_tabuleiro]:
+            tabuleiro_vazio_do_jogador2 = revelar_menor_coluna_tabuleiro2(dificuldade, tabuleiro_vazio_do_jogador2, linha_coluna_tabuleiro, tabuleiro_do_jogador2)
+        elif somas[indice_jo] > tabuleiro_do_jogador2[dimensao_da_matriz][linha_coluna_tabuleiro]:
+            tabuleiro_vazio_do_jogador2 = revelar_maior_coluna_tabuleiro2(dificuldade, tabuleiro_vazio_do_jogador2, linha_coluna_tabuleiro, tabuleiro_do_jogador2)
+        elif somas[indice_jo] == tabuleiro_do_jogador2[dimensao_da_matriz][linha_coluna_tabuleiro]:
+            tabuleiro_vazio_do_jogador2 = revelar_toda_coluna_tabuleiro2(dificuldade, tabuleiro_vazio_do_jogador2, linha_coluna_tabuleiro, tabuleiro_do_jogador2)
+    tabuleiro_vazio_do_jogador2 = revelar_soma_linha_coluna_jogador2(dificuldade,tabuleiro_vazio_do_jogador2, tabuleiro_do_jogador2)
+    return tabuleiro_vazio_do_jogador2
+#funcao que conta a quantidade de casas nao reveladas antes de revelar as casas
+def indices_vazios_inicial(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    vazios_inicial = 0
+    for l in range(dimensao_da_matriz):
+        for j in range(dimensao_da_matriz):
+            if tabuleiro_vazio_do_jogador2 == 0:
+                if indice_jo == 0 or indice_jo == 1:
+                    if tabuleiro_vazio_do_jogador1[l][j] == "X":
+                        vazios_inicial +=1
+            elif tabuleiro_vazio_do_jogador2 != 0:
+                if indice_jo == 0:
+                    if tabuleiro_vazio_do_jogador1[l][j] == "X":
+                        vazios_inicial +=1
+                elif indice_jo == 1:
+                    if tabuleiro_vazio_do_jogador2[l][j] == "X":
+                        vazios_inicial +=1
+    return vazios_inicial
+#funcao que conta a quantidade de casas nao reveladas apos revelar as casas
+def indices_vazios_final(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2, pontos_jogador1, pontos_jogador2, vazios_inicial):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    vazios_final = 0
+    for l in range(dimensao_da_matriz):
+        for j in range(dimensao_da_matriz):
+            if tabuleiro_vazio_do_jogador2 == 0:
+                if indice_jo == 0 or indice_jo == 1:
+                    if tabuleiro_vazio_do_jogador1[l][j] == "X":
+                        vazios_final +=1
+            elif tabuleiro_vazio_do_jogador2 !=0:
+                if indice_jo == 0:
+                    if tabuleiro_vazio_do_jogador1[l][j] == "X":
+                        vazios_final +=1
+                elif indice_jo == 1:
+                    if tabuleiro_vazio_do_jogador2[l][j] == "X":
+                        vazios_final +=1
+    revelados = vazios_inicial - vazios_final
+    if revelados < 0:
+        revelados *= -1
+    if indice_jo == 0:
+        pontos_jogador1 +=revelados
+    elif indice_jo == 1:
+        pontos_jogador2 +=revelados
+    return pontos_jogador1, pontos_jogador2
+#funcao para mostrar os tabuleiros necessarios em forma de matriz e enfeites
+def mostrar_tabuleiro(tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2, dificuldade, jogador1, jogador2):
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+    if tabuleiro_vazio_do_jogador2 == 0:
+        print("Tabuleiro do {} e do {}".format(jogador1, jogador2))
+        print("-"*(19+len(jogador1)+len(jogador2)))
+        for l in range(dimensao_da_matriz+1):
+            print("[", end="")
+            for j in range(dimensao_da_matriz+1):
+                if j == dimensao_da_matriz:
+                    print("{:^5}".format(tabuleiro_vazio_do_jogador1[l][j]), end="")
+                else:
+                    print("{:^5}".format(tabuleiro_vazio_do_jogador1[l][j]), end="")
+            print("]", end="")
+            print()
+        print("-"*(19+(len(jogador1)+len(jogador2))))
+    else:
+        if dimensao_da_matriz == 3:
+            print("-"*59)
+        elif dimensao_da_matriz == 4:
+            print("-"*69)
         else:
-            item = 0
-        #condicionais para saber a quantidade de itens extras que sobraram ↑               
-        print("Foram formadas {} cestas básicas.".format(cesta))
-        #funcao para mostrar quantas cestas basicas foram formadas ↑
-        if outros_to >= cesta:
-            print("{} cestas básicas ganharam um item extra".format(cesta))
-        elif outros_to < cesta:
-            print("{} cestas básicas ganharam um item extra.".format(outros_to))
-        #condicionais para saber quantas cestas basicas ganharam um item extra ↑
-            #funcao para mostrar ao usuario quantas cestas basicas ganharam item extra ↑
-        if cesta > outros_to:
-            print("{} cestas básicas não ganharam um item extra.".format(cesta - outros_to))
-        elif outros_to >= cesta:
-            print("0 cestas básicas não ganharam item extra.")
-        #condicionais para saber quantas basicas nao ganharm item extra ↑
-            #funcao para mostrar ao usuario quantas cestas basicas nao ganharam item extra ↑
-        if acucar_to_parcial == 0 and arroz_to_parcial == 0 and cafe_to_parcial == 0 and extrato_de_tomate_to_parcial == 0 and macarrao_to_parcial == 0 and bolacha_to_parcial == 0 and oleo_to_parcial == 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-            print("Não sobrou nenhum item.")
-        else:        
-            if acucar_to_parcial == 0:
-                acucar = ""
-            elif acucar_to_parcial > 0 and arroz_to_parcial == 0 and cafe_to_parcial == 0 and extrato_de_tomate_to_parcial == 0 and macarrao_to_parcial == 0 and bolacha_to_parcial == 0 and oleo_to_parcial == 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-                acucar = "Açúcar."
-            else:
-                acucar = "Açúcar;"
-            if arroz_to_parcial == 0:
-                arroz = ""
-            elif arroz_to_parcial > 0 and cafe_to_parcial == 0 and extrato_de_tomate_to_parcial == 0 and macarrao_to_parcial == 0 and bolacha_to_parcial == 0 and oleo_to_parcial == 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-                arroz = "Arroz."
-            else:
-                arroz = "Arroz;"
-            if cafe_to_parcial == 0:
-                cafe = ""
-            elif cafe_to_parcial > 0 and extrato_de_tomate_to_parcial == 0 and macarrao_to_parcial == 0 and bolacha_to_parcial == 0 and oleo_to_parcial == 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-                cafe = "Café."
-            else:
-                cafe = "Café;"
-            if extrato_de_tomate_to_parcial == 0:
-                extrato_de_tomate = ""
-            elif extrato_de_tomate_to_parcial > 0 and macarrao_to_parcial == 0 and bolacha_to_parcial == 0 and oleo_to_parcial == 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-                extrato_de_tomate = "Extrato de tomate."
-            else:
-                extrato_de_tomate = "Extrato de tomate;"
-            if macarrao_to_parcial == 0:
-                macarrao = ""
-            elif macarrao_to_parcial > 0 and bolacha_to_parcial == 0 and oleo_to_parcial == 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-                macarrao = "Macarrão."
-            else:
-                macarrao = "Macarrão;"
-            if bolacha_to_parcial == 0:
-                bolacha = ""
-            elif bolacha_to_parcial > 0 and oleo_to_parcial == 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-                bolacha = "Bolacha."
-            else:
-                bolacha = "Bolacha;"
-            if oleo_to_parcial == 0:
-                oleo = ""
-            elif oleo_to_parcial > 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-                oleo = "Óleo."
-            else:
-                oleo = "Óleo;"
-            if farinha_de_trigo_to_parcial == 0:
-                farinha_de_trigo = ""
-            elif farinha_de_trigo_to_parcial > 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-                farinha_de_trigo = "Farinha de trigo."
-            else:
-                farinha_de_trigo = "Farinha de trigo;"
-            if feijao_to_parcial == 0:
-                feijao = ""
-            elif feijao_to_parcial > 0 and sal_to_parcial == 0 and item == 0:
-                feijao = "Feijão."
-            else:
-                feijao = "Feijão;"
-            if sal_to_parcial == 0:
-                sal = ""
-            elif sal_to_parcial > 0 and item == 0:
-                sal = "Sal."
-            else:
-                sal = "Sal;"
-            if item == 0:
-                item = "" 
-            else:
-                item = "Item extra."
-            #condicionais para saber quais itens sobraram ↑
-                #variaveis para mostrar quais itens sobraram ↑        
-            print("{}{}{}{}{}{}{}{}{}{}{}".format(acucar, arroz,cafe,extrato_de_tomate,macarrao,bolacha,oleo,farinha_de_trigo,feijao,sal,item))
-            #funcao para mostrar ao usuario quais itens sobraram ↑
-        print("********************************************************************************************************************************************************************************")
-        #funcao para mostrar varios "*" ↑
-print("***********************************************************************************Relatório Final******************************************************************************")
-#funcao para mostrar ao usuario varios "*" e "Relatório Final" ↑
-print("Açúcar :{} ; Arroz :{} ; Café :{} ; Extrato de tomate :{} ; Macarrão :{} ; Bolacha :{} ; Óleo :{} ; Farinha de trigo :{} ; Feijão :{} ; Sal :{} ; Item extra :{} .".format(acucar_to, arroz_to,cafe_to,extrato_de_tomate_to,macarrao_to,bolacha_to,oleo_to,farinha_de_trigo_to,feijao_to,sal_to,outros_to))
-#funcao para mostrar ao usuario a quantidade total de cada item doado ↑
-print("Foram doados {} itens por Pessoas Físicas e {} itens por Pessoa Jurídicas.".format(total_item_fisica, total_item_juridica))
-#funcao para mostrar a quantidade de itens doados (independente do tipo) por pessoa fisica e pessoa juridica ↑                    
-while acucar_to_parcial >= 1 and arroz_to_parcial >= 4 and cafe_to_parcial >= 2 and extrato_de_tomate_to_parcial >= 2 and macarrao_to_parcial >= 3 and bolacha_to_parcial >= 1 and oleo_to_parcial >= 1 and farinha_de_trigo_to_parcial >= 1 and feijao_to_parcial >= 4 and sal_to_parcial >= 1:
-#repeticao por condicao para montar cestas basicas ↑    
-    cesta +=1
-    #variavel para contar quantas cestas basicas foram formadas ↑
-    acucar_to_parcial -=1
-    arroz_to_parcial -=4
-    cafe_to_parcial -=2
-    extrato_de_tomate_to_parcial -=2
-    macarrao_to_parcial -=3
-    bolacha_to_parcial -=1
-    oleo_to_parcial -=1
-    farinha_de_trigo_to_parcial -=1
-    feijao_to_parcial -=4
-    sal_to_parcial -=1
-    #variaveis para tirar a quantidade de itens que formaram cesta basica ↑
-if outros_to > cesta:
-    item = outros_to - cesta
-else:
-    item = 0
-#condicionais para saber a quantidade de itens extras que sobraram ↑                   
-print("Foram formadas {} cestas básicas.".format(cesta))
-#funcao para mostrar quantas cestas basicas foram formadas ↑
-if outros_to >= cesta:
-    print("{} cestas básicas ganharam um item extra".format(cesta))
-elif outros_to < cesta:
-    print("{} cestas básicas ganharam um item extra.".format(outros_to))
-#condicionais para saber quantas cestas basicas ganharam um item extra ↑
-    #funcao para mostrar ao usuario quantas cestas basicas ganharam item extra ↑    
-if cesta > outros_to:
-    print("{} cestas básicas não ganharam um item extra.".format(cesta - outros_to))
-elif outros_to >= cesta:
-    print("0 cestas básicas não ganharam item extra.")
-#condicionais para saber quantas basicas nao ganharm item extra ↑
-    #funcao para mostrar ao usuario quantas cestas basicas nao ganharam item extra ↑
-if acucar_to_parcial == 0 and arroz_to_parcial == 0 and cafe_to_parcial == 0 and extrato_de_tomate_to_parcial == 0 and macarrao_to_parcial == 0 and bolacha_to_parcial == 0 and oleo_to_parcial == 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-    print("Não sobrou nenhum item.")
-else:       
-    if acucar_to_parcial == 0:
-        acucar = ""
-    elif acucar_to_parcial > 0 and arroz_to_parcial == 0 and cafe_to_parcial == 0 and extrato_de_tomate_to_parcial == 0 and macarrao_to_parcial == 0 and bolacha_to_parcial == 0 and oleo_to_parcial == 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-        acucar = "Açúcar."
+            print("-"*79)
+        print("Tabuleiro do {}".format(jogador1), end="")
+        if dimensao_da_matriz == 3:
+            espaco = (15+len(jogador1))-24
+            if espaco < 0:
+                espaco*= -1
+            espaco +=15
+        elif dimensao_da_matriz == 4:
+            espaco = (15+len(jogador1))-29
+            if espaco < 0:
+                espaco *=-1
+            espaco +=15
+        else:
+            espaco = (15+len(jogador1))-34
+            if espaco < 0:
+                espaco *=-1
+            espaco +=15
+        print(" "*espaco,end="")
+        print("Tabuleiro do {}".format(jogador2))
+        if dimensao_da_matriz == 3:
+            print("-"*59)
+        elif dimensao_da_matriz == 4:
+            print("-"*69)
+        else:
+            print("-"*79)
+        for l in range(dimensao_da_matriz+1):
+            print("[", end="")
+            for j in range(dimensao_da_matriz+1):
+                if j == dimensao_da_matriz:
+                    print("{:^5}".format(tabuleiro_vazio_do_jogador1[l][j]), end="")
+                else:
+                    print("{:^5}".format(tabuleiro_vazio_do_jogador1[l][j]), end="")
+            print("]", end="")
+            print('               ',end='')
+            print("[",end="")
+            for k in range(dimensao_da_matriz+1):
+                if k == dimensao_da_matriz:
+                    print("{:^5}".format(tabuleiro_vazio_do_jogador2[l][k]), end="")
+                else:
+                    print("{:^5}".format(tabuleiro_vazio_do_jogador2[l][k]), end="")
+            print("]",end="")
+            print()
+        if dimensao_da_matriz == 3:
+            print("-"*59)
+        elif dimensao_da_matriz == 4:
+            print("-"*69)
+        else:
+            print("-"*79)
+#funcao para guardar o historico de jogadas do jogador1 ou dos dois jogadores
+def historico_jo1(soma, historico_jogador1, dimensao_da_matriz, jogada, linha_coluna_tabuleiro, tabuleiro_do_jogador1):
+    if jogada[0] == "C":
+        if soma < tabuleiro_do_jogador1[dimensao_da_matriz][linha_coluna_tabuleiro]:
+            historico_jogador1.append(f"{soma}<{jogada}")
+        elif soma > tabuleiro_do_jogador1[dimensao_da_matriz][linha_coluna_tabuleiro]:
+                historico_jogador1.append(f"{soma}>{jogada}")
+        else:
+            historico_jogador1.append(f"{soma}={jogada}")
     else:
-        acucar = "Açúcar;"
-    if arroz_to_parcial == 0:
-        arroz = ""
-    elif arroz_to_parcial > 0 and cafe_to_parcial == 0 and extrato_de_tomate_to_parcial == 0 and macarrao_to_parcial == 0 and bolacha_to_parcial == 0 and oleo_to_parcial == 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-        arroz = "Arroz."
+        if soma < tabuleiro_do_jogador1[linha_coluna_tabuleiro][dimensao_da_matriz]:
+            historico_jogador1.append(f"{soma}<{jogada}")
+        elif soma > tabuleiro_do_jogador1[linha_coluna_tabuleiro][dimensao_da_matriz]:
+            historico_jogador1.append(f"{soma}>{jogada}")
+        else:
+            historico_jogador1.append(f"{soma}={jogada}")
+    return historico_jogador1
+#funcao para guardar o historico de jogadas do jogador2
+def historico_jo2(soma, historico_jogador2, dimensao_da_matriz, jogada, linha_coluna_tabuleiro, tabuleiro_do_jogador2):
+    if jogada[0] == "C":
+        if soma < tabuleiro_do_jogador2[dimensao_da_matriz][linha_coluna_tabuleiro]:
+            historico_jogador2.append(f"{soma}<{jogada}")
+        elif soma > tabuleiro_do_jogador2[dimensao_da_matriz][linha_coluna_tabuleiro]:
+                historico_jogador2.append(f"{soma}>{jogada}")
+        else:
+            historico_jogador2.append(f"{soma}={jogada}")
     else:
-        arroz = "Arroz;"
-    if cafe_to_parcial == 0:
-        cafe = ""
-    elif cafe_to_parcial > 0 and extrato_de_tomate_to_parcial == 0 and macarrao_to_parcial == 0 and bolacha_to_parcial == 0 and oleo_to_parcial == 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-        cafe = "Café."
+        if soma < tabuleiro_do_jogador2[linha_coluna_tabuleiro][dimensao_da_matriz]:
+            historico_jogador2.append(f"{soma}<{jogada}")
+        elif soma > tabuleiro_do_jogador2[linha_coluna_tabuleiro][dimensao_da_matriz]:
+            historico_jogador2.append(f"{soma}>{jogada}")
+        else:
+            historico_jogador2.append(f"{soma}={jogada}")
+    return historico_jogador2
+#funcao para verificar se uma linha ou coluna inteira ja foi revelada
+def validacao_linha_coluna_tabuleiro(dimensao_da_matriz, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2, linha_coluna_tabuleiro, vez_do_jogador):
+    pode = 0
+    if tabuleiro_vazio_do_jogador2 == 0 or tabuleiro_vazio_do_jogador2 != 0 and vez_do_jogador == 1:
+        if linha_coluna_tabuleiro[0] == "L":
+            linha_indice = int(linha_coluna_tabuleiro[1])
+            for j in range(dimensao_da_matriz):
+                if tabuleiro_vazio_do_jogador1[linha_indice][j] == "X":
+                    pode +=1
+        else:
+            coluna_indice = int(linha_coluna_tabuleiro[1])
+            for l in range(dimensao_da_matriz):
+                if tabuleiro_vazio_do_jogador1[l][coluna_indice] == "X":
+                    pode +=1
     else:
-        cafe = "Café;"
-    if extrato_de_tomate_to_parcial == 0:
-        extrato_de_tomate = ""
-    elif extrato_de_tomate_to_parcial > 0 and macarrao_to_parcial == 0 and bolacha_to_parcial == 0 and oleo_to_parcial == 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-        extrato_de_tomate = "Extrato de tomate."
+        if linha_coluna_tabuleiro[0] == "L":
+            linha_indice = int(linha_coluna_tabuleiro[1])
+            for j in range(dimensao_da_matriz):
+                if tabuleiro_vazio_do_jogador2[linha_indice][j] == "X":
+                    pode +=1
+        else:
+            coluna_indice = int(linha_coluna_tabuleiro[1])
+            for l in range(dimensao_da_matriz):
+                if tabuleiro_vazio_do_jogador2[l][coluna_indice] == "X":
+                    if tabuleiro_vazio_do_jogador2[l][coluna_indice] == "X":
+                        pode +=1
+    return pode
+#funcao para a jogabilidade
+def main():
+    print("------NOME DOS JOGADORES------")
+    #funcao para perguntar ao usuario os nomes dos jogadores
+    jogadores = input("Qual o nome dos jogadores\n:").split(" ")
+    #validacao
+    while jogadores[0].isalpha()==False or jogadores[1].isalpha()==False:
+        print("Digite nomes válidos!")
+        jogadores = input("Qual o nome dos jogadores\n:").split(" ")
+    print()
+
+    #funcao para sortear quem vai ser o jogador1 e quem vai ser o jogador2
+    sortear = random.randrange(1, 3)
+    if sortear == 1:
+        jogador1 = jogadores[0].upper()
+        jogador2 = jogadores[1].upper()
     else:
-        extrato_de_tomate = "Extrato de tomate;"
-    if macarrao_to_parcial == 0:
-        macarrao = ""
-    elif macarrao_to_parcial > 0 and bolacha_to_parcial == 0 and oleo_to_parcial == 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-        macarrao = "Macarrão."
+        jogador2 = jogadores[0].upper()
+        jogador1 = jogadores[1].upper()
+    print("{} é o jogador 1 e {} é o jogador 2!".format(jogador1, jogador2))
+    print("------------------------------")
+    print("---QUANTIDADE DE TABULEIROS---")
+    #funcao para perguntar ao usuario a quantidade de tabuleiros
+    modo_de_jogo = input("1. Um Tabuleiro\n2. Dois Tabuleiros\n:")
+    #validacao
+    while modo_de_jogo.isdigit()==False or int(modo_de_jogo) > 2 or int(modo_de_jogo) < 1:
+        print("Digite um número válido!")
+        modo_de_jogo = input("1. Um Tabuleiro\n2. Dois Tabuleiros\n:")
+    modo_de_jogo = int(modo_de_jogo)
+    print("------------------------------")
+
+    print("---------MODO DE JOGO---------")
+    #funcao para perguntar ao usuario a dificuldade do jogo
+    dificuldade = input("1. Fácil\n2. Médio\n3. Difícil\n:")
+    #validacao
+    while dificuldade.isdigit()==False or int(dificuldade) > 3 or int(dificuldade) < 1:
+        print("Digite um número válido!")
+        dificuldade= input("1. Fácil\n2. Médio\n3. Difícil\n:")
+    dificuldade = int(dificuldade)
+    print("------------------------------")
+    
+    #funcao chamada para pegar o tabuleiro_do_jogador1 e o tabuleiro_do_jogador2
+    tabuleiro_do_jogador1, tabuleiro_do_jogador2 = quantidade_de_tabuleiros(modo_de_jogo,dificuldade)
+    
+    #funcao chamada para pegar o tabuleiro_vazio_do_jogador1 e o tabuleiro_vazio_do_jogador2
+    tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2 = quantidade_de_tabuleiros_vazio(modo_de_jogo,dificuldade)
+
+    print("---------ENCERRAR JOGO--------")
+    #funcao para perguntar ao usuario como ele quer encerrar o jogo
+    fim_de_jogo = input("1. Número de Rodadas\n          ou\n2. Tabuleiro Completo\n:")
+    #validacao
+    while fim_de_jogo.isdigit()==False or int(fim_de_jogo) > 2 or int(fim_de_jogo) < 1:
+        print("Digite um número válido!")
+        fim_de_jogo = input("1. Número de Rodadas\n          ou\n2. Tabuleiro Completo\n:")
+    fim_de_jogo = int(fim_de_jogo)
+
+    if fim_de_jogo == 1:
+        #funcao para perguntar ao usuario quantas rodadas ele quer
+        rodadas = input("Quantas rodadas\n:")
+        #validacao
+        while rodadas.isdigit()==False or int(rodadas) % 2 == 0:
+            print("O número de rodadas têm que ser positivo e têm que ser ímpar!")
+            rodadas = input("Quantas rodadas\n:")
+        rodadas = int(rodadas)
     else:
-        macarrao = "Macarrão;"
-    if bolacha_to_parcial == 0:
-        bolacha = ""
-    elif bolacha_to_parcial > 0 and oleo_to_parcial == 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-        bolacha = "Bolacha."
+        rodadas = 1000000
+    print("------------------------------")
+
+    #funcao para chamar tabuleiro_do_jogador1 e o tabuleiro_do_jogador2 com a soma das linha e colunas
+    tabuleiro_do_jogador1, tabuleiro_do_jogador2 = soma_linha_coluna(dificuldade,tabuleiro_do_jogador1, tabuleiro_do_jogador2)
+    
+    #funcao para chamar primeiro, ultimo e dimensao_da_matriz
+    primeiro, ultimo, dimensao_da_matriz = dimensao_do_tabuleiro(dificuldade)
+
+    #declarando variaveis para contar os pontos e listas para guardar o historico
+    pontos_jogador1 = pontos_jogador2 = 0
+    historico_jogador1 = []
+    historico_jogador2 = []
+    #condicional por condicao para continuar enquanto o numero de rodadas for maior que 0
+    while rodadas > 0:
+
+        #declrando variavel para contar a vez do jogador
+        vez_do_jogador = 0
+
+        #declarando listas para guardar a soma dos dois jogadores e a linha ou coluna que o usuario escolheu
+        somas = []
+        linha_coluna = []
+        linha_coluna_indice = []
+
+        #condicional para indentificar caso o tabuleiro do jogador 1 ou o tabuleiro do jogador 2 estiver todo completo
+        if tabuleiro_vazio_do_jogador2 == 0 and (pontos_jogador1+pontos_jogador2) == (dimensao_da_matriz*dimensao_da_matriz) or tabuleiro_vazio_do_jogador2 != 0 and pontos_jogador1 == (dimensao_da_matriz*dimensao_da_matriz) or tabuleiro_vazio_do_jogador2 != 0 and pontos_jogador2 == (dimensao_da_matriz*dimensao_da_matriz):
+            rodadas = 0
+        print("--------------------------------Placar-------------------------------")
+
+        #funcao para mostrar os pontos do jogador1 e os pontos do jogador2
+        print("    {}:{} pontos.                         {}:{} pontos.".format(jogador1, pontos_jogador1, jogador2, pontos_jogador2))
+        print("---------------------------------------------------------------------")
+
+        #funcao para mostrar ao usuario os tabuleiros necessarios
+        mostrar_tabuleiro(tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2, dificuldade, jogador1, jogador2)
+        
+        #condicional para indentificar se o numero de rodadas e maior que 0
+        if rodadas > 0:
+
+            #repeticao por contagem para perguntar duas vezes a linha_coluna_tabuleiro e a soma
+            for i in range(2):
+                vez_do_jogador +=1
+                if vez_do_jogador == 1:
+                    print("Vez do {}".format(jogador1))
+                else:
+                    print("Vez do {}".format(jogador2))
+                #funcao para perguntar ao usuario a linha ou coluna que ele quer
+                linha_coluna_tabuleiro = input("Digite uma linha ou coluna que vá de 0 à {}\n:".format(dimensao_da_matriz-1)).upper()
+                #validacao
+                if dimensao_da_matriz == 3:
+                    dimensao = ["C0", "C1", "C2", "L0", "L1", "L2"]
+                elif dimensao_da_matriz == 4:
+                    dimensao = ["C0", "C1", "C2", "C3", "L0", "L1", "L2", "L3"]
+                else:
+                    dimensao = ["C0", "C1", "C2", "C3", "C4", "L0", "L1", "L2", "L3", "L4"]
+                while linha_coluna_tabuleiro not in dimensao or validacao_linha_coluna_tabuleiro(dimensao_da_matriz, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2, linha_coluna_tabuleiro, vez_do_jogador) == 0:
+                    print("Digite uma linha ou coluna válida!")
+                    linha_coluna_tabuleiro = input("Digite uma linha ou coluna que vá de 0 à {}\n:".format(dimensao_da_matriz-1)).upper()
+
+                #funcao para perguntar ao usuario a soma da linha ou coluna
+                soma = input("Qual a soma\n:")
+                #validacao
+                while soma.isdigit()==False:
+                    print("Digite um número válido!")
+                    soma = input("Qual a soma\n:")
+                soma = int(soma)
+                somas.append(soma)
+                linha_coluna.append(linha_coluna_tabuleiro[0])
+                
+                #condicional para indentificar se eu vou trabalhar com o tabuleiro1
+                if tabuleiro_do_jogador2 == 0:
+                    #condicional para indenticicar se eu vou manipular uma coluna
+                    if linha_coluna_tabuleiro[0] == "C":
+                        jogada = linha_coluna_tabuleiro
+                        linha_coluna_tabuleiro = linha_coluna_tabuleiro.replace("C","")
+                        linha_coluna_tabuleiro= int(linha_coluna_tabuleiro)
+                        linha_coluna_indice.append(linha_coluna_tabuleiro)
+                        if vez_do_jogador == 1:
+                            historico_jogador1 = historico_jo1(soma, historico_jogador1, dimensao_da_matriz, jogada, linha_coluna_tabuleiro, tabuleiro_do_jogador1)
+                            diferenca = soma - tabuleiro_do_jogador1[dimensao_da_matriz][linha_coluna_tabuleiro]
+                            if diferenca < 0:
+                                diferenca *= -1
+                        if vez_do_jogador == 2:
+                            historico_jogador1 = historico_jo1(soma, historico_jogador1, dimensao_da_matriz, jogada, linha_coluna_tabuleiro, tabuleiro_do_jogador1)
+                            diferenca1 = soma - tabuleiro_do_jogador1[dimensao_da_matriz][linha_coluna_tabuleiro]
+                            if diferenca1 < 0:
+                                diferenca1 *= -1
+                    #condicional para indenticicar se eu vou manipular uma linha
+                    else:
+                        jogada = linha_coluna_tabuleiro
+                        linha_coluna_tabuleiro = linha_coluna_tabuleiro.replace("L","")
+                        linha_coluna_tabuleiro = int(linha_coluna_tabuleiro)
+                        linha_coluna_indice.append(linha_coluna_tabuleiro)
+                        if vez_do_jogador == 1:
+                            historico_jogador1 = historico_jo1(soma, historico_jogador1, dimensao_da_matriz, jogada, linha_coluna_tabuleiro, tabuleiro_do_jogador1)
+                            diferenca = soma - tabuleiro_do_jogador1[linha_coluna_tabuleiro][dimensao_da_matriz]
+                            if diferenca < 0:
+                                diferenca *= -1
+                        if vez_do_jogador == 2:
+                            historico_jogador1 = historico_jo1(soma, historico_jogador1, dimensao_da_matriz, jogada, linha_coluna_tabuleiro, tabuleiro_do_jogador1)
+                            diferenca1 = soma - tabuleiro_do_jogador1[linha_coluna_tabuleiro][dimensao_da_matriz]
+                            if diferenca1 < 0:
+                                diferenca1 *= -1
+
+                #condicional para indentificar se eu vou trabalhar com o tabuleiro1 e tabuleiro2
+                else:
+                    #condicional para indenticicar se eu vou manipular uma coluna
+                    if linha_coluna_tabuleiro[0] == "C":
+                        jogada = linha_coluna_tabuleiro
+                        linha_coluna_tabuleiro = linha_coluna_tabuleiro.replace("C","")
+                        linha_coluna_tabuleiro= int(linha_coluna_tabuleiro)
+                        linha_coluna_indice.append(linha_coluna_tabuleiro)
+                        #condicional para saber a vez do jogador 1
+                        if vez_do_jogador == 1:
+                            historico_jogador1 = historico_jo1(soma, historico_jogador1, dimensao_da_matriz, jogada, linha_coluna_tabuleiro, tabuleiro_do_jogador1)
+                            diferenca = soma - tabuleiro_do_jogador1[dimensao_da_matriz][linha_coluna_tabuleiro]
+                            if diferenca < 0:
+                                diferenca *= -1
+                        #condicional para saber a vez do jogador 2
+                        if vez_do_jogador == 2:
+                            historico_jogador2 = historico_jo2(soma, historico_jogador2, dimensao_da_matriz, jogada, linha_coluna_tabuleiro, tabuleiro_do_jogador2)
+                            diferenca1 = soma - tabuleiro_do_jogador2[dimensao_da_matriz][linha_coluna_tabuleiro]
+                            if diferenca1 < 0:
+                                diferenca1 *= -1
+                    #condicional para indenticicar se eu vou manipular uma linha
+                    else:
+                        jogada = linha_coluna_tabuleiro
+                        linha_coluna_tabuleiro = linha_coluna_tabuleiro.replace("L","")
+                        linha_coluna_tabuleiro = int(linha_coluna_tabuleiro)
+                        linha_coluna_indice.append(linha_coluna_tabuleiro)
+                        #condicional para saber a vez do jogador 1
+                        if vez_do_jogador == 1:
+                            historico_jogador1 = historico_jo1(soma, historico_jogador1, dimensao_da_matriz, jogada, linha_coluna_tabuleiro, tabuleiro_do_jogador1)
+                            diferenca = soma - tabuleiro_do_jogador1[linha_coluna_tabuleiro][dimensao_da_matriz]
+                            if diferenca < 0:
+                                diferenca *= -1
+                        #condicional para saber a vez do jogador 2
+                        if vez_do_jogador == 2:
+                            historico_jogador2 = historico_jo2(soma, historico_jogador2, dimensao_da_matriz, jogada, linha_coluna_tabuleiro, tabuleiro_do_jogador2)
+                            diferenca1 = soma - tabuleiro_do_jogador2[linha_coluna_tabuleiro][dimensao_da_matriz]
+                            if diferenca1 < 0:
+                                diferenca1 *= -1
+
+            #condicional para se a diferenca do primeiro jogador for menor que a diferenca do segundo jogador e se tem em comum um tabuleiro
+            if diferenca < diferenca1 and tabuleiro_do_jogador2 == 0:
+                indice_jo = 0
+                vazios_inicial = indices_vazios_inicial(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2)
+                linha_coluna_tabuleiro = linha_coluna_indice[indice_jo]
+                tabuleiro_vazio_do_jogador1 = revelar_tab1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1, dimensao_da_matriz, somas, linha_coluna, indice_jo)
+                pontos_jogador1, pontos_jogador2 = indices_vazios_final(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2, pontos_jogador1, pontos_jogador2, vazios_inicial)
+
+            #condicional para se a diferenca do primeiro jogador for maior que a diferenca do segundo jogador e se tem em comum um tabuleiro    
+            elif diferenca > diferenca1 and tabuleiro_do_jogador2 == 0:
+                indice_jo = 1
+                vazios_inicial = indices_vazios_inicial(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2)
+                linha_coluna_tabuleiro = linha_coluna_indice[indice_jo]
+                tabuleiro_vazio_do_jogador1 = revelar_tab1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1, dimensao_da_matriz, somas, linha_coluna, indice_jo)
+                pontos_jogador1, pontos_jogador2 = indices_vazios_final(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2, pontos_jogador1, pontos_jogador2, vazios_inicial)
+            
+            #condicional para se a diferenca do primeiro jogador for igual a diferenca do segundo jogador e se tem em comum um tabuleiro
+            elif diferenca == diferenca1 and tabuleiro_do_jogador2 == 0:
+                indice_jo = 0
+                vazios_inicial = indices_vazios_inicial(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2)
+                linha_coluna_tabuleiro = linha_coluna_indice[indice_jo]
+                tabuleiro_vazio_do_jogador1 = revelar_tab1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1, dimensao_da_matriz, somas, linha_coluna, indice_jo)
+                pontos_jogador1, pontos_jogador2 = indices_vazios_final(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2, pontos_jogador1, pontos_jogador2, vazios_inicial)
+                indice_jo = 1
+                vazios_inicial = indices_vazios_inicial(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2)
+                linha_coluna_tabuleiro = linha_coluna_indice[indice_jo]
+                tabuleiro_vazio_do_jogador1 = revelar_tab1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1, dimensao_da_matriz, somas, linha_coluna, indice_jo)
+                pontos_jogador1, pontos_jogador2 = indices_vazios_final(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2, pontos_jogador1, pontos_jogador2, vazios_inicial)
+
+            #condicional para se a diferenca do primeiro jogador for menor que a diferenca do segundo jogador e se tem o tabuleiro1 e tabuleiro2
+            elif diferenca < diferenca1 and tabuleiro_do_jogador2 != 0:
+                indice_jo = 0
+                vazios_inicial = indices_vazios_inicial(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2)
+                linha_coluna_tabuleiro = linha_coluna_indice[indice_jo]
+                tabuleiro_vazio_do_jogador1 = revelar_tab1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1, dimensao_da_matriz, somas, linha_coluna, indice_jo)
+                pontos_jogador1, pontos_jogador2 = indices_vazios_final(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2, pontos_jogador1, pontos_jogador2, vazios_inicial)
+
+            #condicional para se a diferenca do primeiro jogador for maior que a diferenca do segundo jogador e se tem o tabuleiro1 e tabuleiro2
+            elif diferenca > diferenca1 and tabuleiro_do_jogador2 != 0:
+                indice_jo = 1
+                vazios_inicial = indices_vazios_inicial(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2)
+                linha_coluna_tabuleiro = linha_coluna_indice[indice_jo]
+                tabuleiro_vazio_do_jogador2 = revelar_tab2(dificuldade, tabuleiro_vazio_do_jogador2, tabuleiro_do_jogador2, linha_coluna, somas, linha_coluna_tabuleiro, dimensao_da_matriz, indice_jo)
+                pontos_jogador1, pontos_jogador2 = indices_vazios_final(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2, pontos_jogador1, pontos_jogador2, vazios_inicial)
+            
+            #condicional para se a diferenca do primeiro jogado for igual a diferenca do segundo jogador e se tem o tabuleiro1 e tabuleiro2
+            elif diferenca == diferenca1 and tabuleiro_do_jogador2 != 0:
+                indice_jo = 0
+                vazios_inicial = indices_vazios_inicial(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2)
+                linha_coluna_tabuleiro = linha_coluna_indice[indice_jo]
+                tabuleiro_vazio_do_jogador1 = revelar_tab1(dificuldade, tabuleiro_vazio_do_jogador1, linha_coluna_tabuleiro, tabuleiro_do_jogador1, dimensao_da_matriz, somas, linha_coluna, indice_jo)
+                pontos_jogador1, pontos_jogador2 = indices_vazios_final(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2, pontos_jogador1, pontos_jogador2, vazios_inicial)
+                indice_jo = 1
+                vazios_inicial = indices_vazios_inicial(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2)
+                linha_coluna_tabuleiro = linha_coluna_indice[indice_jo]
+                tabuleiro_vazio_do_jogador2 = revelar_tab2(dificuldade, tabuleiro_vazio_do_jogador2, tabuleiro_do_jogador2, linha_coluna, somas, linha_coluna_tabuleiro, dimensao_da_matriz, indice_jo)
+                pontos_jogador1, pontos_jogador2 = indices_vazios_final(dificuldade, indice_jo, tabuleiro_vazio_do_jogador1, tabuleiro_vazio_do_jogador2, pontos_jogador1, pontos_jogador2, vazios_inicial)
+
+            #condicional para indentificar se e um historico
+            if rodadas > 0:
+                print("------------------------------Histórico------------------------------")
+                if tabuleiro_vazio_do_jogador2 == 0:
+                    #funcao para mostrar o historico dos jogadores
+                    print("Histórico do {} e do {}:".format(jogador1, jogador2))
+                    print(historico_jogador1)
+
+                #condicional para indentificar se sao dois historicos
+                else:
+                    #funcao para mostrar o historico do primeiro jogador
+                    print("Histórico do {}:".format(jogador1))
+                    print(historico_jogador1)
+                    print()
+                    #funcao para mostrar o historico do segundo jogador
+                    print("Histórico do {}:".format(jogador2))
+                    print(historico_jogador2)
+                print()
+                print("---------------------------------------------------------------------")
+            rodadas -=1 
+
+    #condicionais para indentificar o vencedor
+    if pontos_jogador1 > pontos_jogador2:
+        #funcao para mostrar que o primeiro jogador venceu
+        print("{} venceu!".format(jogador1))
+    elif pontos_jogador1 < pontos_jogador2:
+        #funcao para mostrar que o segundo jogador venceu
+        print("{} venceu!".format(jogador2))
     else:
-        bolacha = "Bolacha;"
-    if oleo_to_parcial == 0:
-        oleo = ""
-    elif oleo_to_parcial > 0 and farinha_de_trigo_to_parcial == 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-        oleo = "Óleo."
-    else:
-        oleo = "Óleo;"
-    if farinha_de_trigo_to_parcial == 0:
-        farinha_de_trigo = ""
-    elif farinha_de_trigo_to_parcial > 0 and feijao_to_parcial == 0 and sal_to_parcial == 0 and item == 0:
-        farinha_de_trigo = "Farinha de trigo."
-    else:
-        farinha_de_trigo = "Farinha de trigo;"
-    if feijao_to_parcial == 0:
-        feijao = ""
-    elif feijao_to_parcial > 0 and sal_to_parcial == 0 and item == 0:
-        feijao = "Feijão."
-    else:
-        feijao = "Feijão;"
-    if sal_to_parcial == 0:
-        sal = ""
-    elif sal_to_parcial > 0 and item == 0:
-        sal = "Sal."
-    else:
-        sal = "Sal;"
-    if item == 0:
-        item = "" 
-    else:
-        item = "Item extra."
-    #condicionais para saber quais itens sobraram ↑
-        #variaveis para mostrar quais itens sobraram ↑        
-    print("{}{}{}{}{}{}{}{}{}{}{}".format(acucar, arroz,cafe,extrato_de_tomate,macarrao,bolacha,oleo,farinha_de_trigo,feijao,sal,item))
-    #funcao para mostrar ao usuario quais itens sobraram ↑
-print("********************************************************************************************************************************************************************************")
-#funcao para mostrar varios "*" ↑
+        #funcao para mostrar que o primeiro jogador e o segundo jogador empataram
+        print("{} e {} empataram!".format(jogador1, jogador2))
+if __name__ == '__main__':
+    main()
